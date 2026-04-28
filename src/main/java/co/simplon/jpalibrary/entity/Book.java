@@ -25,4 +25,8 @@ public class Book {
 
  @Column(columnDefinition = "boolean default true")
  private Boolean available;
+
+ public Book() {
+ }
+
 }
