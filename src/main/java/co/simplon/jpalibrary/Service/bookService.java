@@ -1,12 +1,12 @@
-package co.simplon.jpalibrary.Service;
+package co.simplon.jpalibrary.service;
 
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import co.simplon.jpalibrary.Repository.BookRepository;
-import co.simplon.jpalibrary.entity.Book;
+import co.simplon.jpalibrary.entity.BookEntity;
+import co.simplon.jpalibrary.repository.BookRepository;
 
 @Service
 public class BookService {
@@ -14,19 +14,19 @@ public class BookService {
   @Autowired
   private BookRepository bookRepository;
 
-  public Iterable<Book> getBooks() {
+  public Iterable<BookEntity> getBooks() {
    return bookRepository.findAll();
   }
 
-  public Optional<Book> getOneBook(final Long id) {
+  public Optional<BookEntity> getOneBook(final Long id) {
    return bookRepository.findById(id);
   }
 
-  public Book addBook(Book book) {
+  public BookEntity addBook(BookEntity book) {
    return bookRepository.save(book);
   }
 
-  public Book updateBook(Book book) {
+  public BookEntity updateBook(BookEntity book) {
    return bookRepository.save(book);
   }
 

@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "book")
-public class Book {
+public class BookEntity {
  
  @Id
  @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,13 @@ public class Book {
  @Column(columnDefinition = "boolean default true")
  private Boolean available;
 
- public Book() {
+ public BookEntity() {
  }
 
+ public BookEntity(String title, String description) {
+  this.title = title;
+  this.description = description;
+ }
+
+ 
 }
