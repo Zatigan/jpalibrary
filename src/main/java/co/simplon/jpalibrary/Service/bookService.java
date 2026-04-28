@@ -5,14 +5,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import co.simplon.jpalibrary.Repository.BBookRepository;
+import co.simplon.jpalibrary.Repository.BookRepository;
 import co.simplon.jpalibrary.entity.Book;
 
 @Service
-public class bookService {
+public class BookService {
 
   @Autowired
-  private BBookRepository bookRepository;
+  private BookRepository bookRepository;
 
   public Iterable<Book> getBooks() {
    return bookRepository.findAll();

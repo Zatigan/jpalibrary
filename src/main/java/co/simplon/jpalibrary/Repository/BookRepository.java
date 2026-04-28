@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import co.simplon.jpalibrary.entity.Book;
 
 @Repository
-public interface BBookRepository extends JpaRepository<Book, Long>{
+public interface BookRepository extends JpaRepository<Book, Long>{
 
 }
