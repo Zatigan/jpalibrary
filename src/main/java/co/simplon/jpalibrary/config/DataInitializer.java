@@ -30,7 +30,6 @@ public class DataInitializer implements CommandLineRunner{
   BookEntity passeMiroir3 = new BookEntity("La Mémoire de Babel", "Ophélie se rend sur l'Arche de Babel à la recherche des origines des Arches et de la mystérieuse entité nommée Dieu. Sa quête révèle des secrets qui ébranlent l'ordre du monde.");
   BookEntity passeMiroir4 = new BookEntity("La Tempête des Échos", "Ophélie affronte la vérité sur Dieu et les Arches. Alors que le monde se fracture, elle doit faire des choix irréversibles pour sauver ce qui peut encore l'être.");
  
- 
  this.bookRepository.save(lotr1);
  this.bookRepository.save(lotr2);
  this.bookRepository.save(lotr3);
@@ -43,6 +42,12 @@ public class DataInitializer implements CommandLineRunner{
  this.bookRepository.save(passeMiroir2);
  this.bookRepository.save(passeMiroir3);
  this.bookRepository.save(passeMiroir4);
+
+
+
+ // System.out.println(lotr1);
+ // System.out.println(belgariade1);
+ // System.out.println(passeMiroir1);
  
  }
 

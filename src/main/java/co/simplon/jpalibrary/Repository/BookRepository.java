@@ -8,4 +8,5 @@ import co.simplon.jpalibrary.entity.BookEntity;
 @Repository
 public interface BookRepository extends JpaRepository<BookEntity, Long>{
 
+ 
 }
