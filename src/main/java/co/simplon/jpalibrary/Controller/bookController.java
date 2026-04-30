@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import co.simplon.jpalibrary.service.BookService;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -52,15 +54,22 @@ public class BookController {
     }
 
     @PutMapping("/books/{id}")
-    public BookEntity updateBook(@PathVariable Long id, @RequestBody BookEntity book) {
-        return bookService.updateBook(book);
+    public Optional<BookEntity> updateBook(@PathVariable Long id, @RequestBody BookEntity book) {
+        
+        Optional<BookEntity> bookToUpdate = bookService.findById(id);
+        
+        if(bookToUpdate.isPresent()) {
+            // BookEntity bookToUpdate = book.get();
+        
+        }
     }
 
+
     @DeleteMapping("/books/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public void deleteBook(@PathVariable Long id) {
         if (bookRepository.existsById(id)) {
             bookService.deleteBook(id);
-            throw new ResponseStatusException(HttpStatus.ACCEPTED, "Livre supprimé");
         } else {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Suppression impossible");
         }
