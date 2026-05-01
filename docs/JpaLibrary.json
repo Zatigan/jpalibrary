@@ -1,0 +1,146 @@
+{
+  "info": {
+    "name": "JpaLibrary",
+    "description": null,
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET All books",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost:8081/books",
+          "protocol": "http",
+          "host": [
+            "localhost:8081"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": [],
+          "variable": []
+        }
+      }
+    },
+    {
+      "name": "GET One book",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost:8081/books/11",
+          "protocol": "http",
+          "host": [
+            "localhost:8081"
+          ],
+          "path": [
+            "books",
+            "11"
+          ],
+          "query": [],
+          "variable": []
+        }
+      }
+    },
+    {
+      "name": "POST Create a book",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost:8081/books",
+          "protocol": "http",
+          "host": [
+            "localhost:8081"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Martine à l'école\",\n  \"description\": \"Martine, elle apprend plein de trucs à l'école !\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "PUT Update one book",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost:8081/books/13",
+          "protocol": "http",
+          "host": [
+            "localhost:8081"
+          ],
+          "path": [
+            "books",
+            "13"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Martine à l'école des fans\",\n  \"description\": \"Martine, elle apprend plein de trucs à l'école, mais pas à chanter !\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "DELETE One book",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost:8081/books/13",
+          "protocol": "http",
+          "host": [
+            "localhost:8081"
+          ],
+          "path": [
+            "books",
+            "13"
+          ],
+          "query": [],
+          "variable": []
+        }
+      }
+    }
+  ],
+  "variable": []
+}
