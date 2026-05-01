@@ -66,4 +66,11 @@ public class BookEntity {
   this.available = available;
  }
 
+ @Override
+ public String toString() {
+    return "BookEntity [id=" + id + ", title=" + title + ", description=" + description + ", available=" + available
+            + ", getId()=" + getId() + ", getTitle()=" + getTitle() + ", getDescription()=" + getDescription()
+            + ", toString()=" + super.toString() + "]";
+ }
+
 }

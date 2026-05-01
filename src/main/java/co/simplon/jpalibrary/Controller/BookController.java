@@ -1,32 +1,28 @@
-package co.simplon.jpalibrary.controller;
+package co.simplon.jpalibrary.Controller;
 
-import co.simplon.jpalibrary.repository.BookRepository;
+import co.simplon.jpalibrary.Repository.BookRepository;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 
 import co.simplon.jpalibrary.entity.BookEntity;
-import co.simplon.jpalibrary.service.BookService;
+import co.simplon.jpalibrary.Service.BookService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-// import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
-// @RequestMapping("/books")
+@RequestMapping("/books")
 public class BookController {
 
     private final BookRepository bookRepository;
@@ -37,35 +33,57 @@ public class BookController {
         this.bookRepository = bookRepository;
     }
 
-    @GetMapping("/books")
+    @GetMapping("")
     public List<BookEntity> getBooks() {
         return bookService.getBooks();
     }
 
-    @GetMapping("/books/{id}")
+    @GetMapping("/{id}")
     public BookEntity getBookById(@PathVariable Long id) {
         return bookService.getBookById(id);
     }
 
-    @PostMapping("/books")
+    @PostMapping("")
     public ResponseEntity<BookEntity> addBook(@RequestBody BookEntity book) {
         BookEntity bookToCreate = this.bookService.addBook(book);
         return new ResponseEntity<>(bookToCreate, HttpStatus.CREATED);
     }
 
-    @PutMapping("/books/{id}")
-    public Optional<BookEntity> updateBook(@PathVariable Long id, @RequestBody BookEntity book) {
+    @PutMapping("/{id}")
+    public ResponseEntity<BookEntity> updateBook(@PathVariable Long id, @RequestBody BookEntity book) {
         
-        Optional<BookEntity> bookToUpdate = bookService.findById(id);
-        
-        if(bookToUpdate.isPresent()) {
-            // BookEntity bookToUpdate = book.get();
-        
+        boolean doesBookExist = bookService.isBookExisting(id);
+                
+        if(doesBookExist) {
+            BookEntity currentBook = bookService.getBookById(id);
+
+            String newTitle = book.getTitle();
+            if(newTitle != null) {
+                currentBook.setTitle(newTitle);
+            }
+
+            String newDescription = book.getDescription();
+            if(newDescription != null) {
+                currentBook.setDescription(newDescription);
+            }
+
+            Boolean newAvailable = book.getAvailable();
+            if(newAvailable != null) {
+                currentBook.setAvailable(newAvailable);
+            }
+
+            bookService.updateBook(currentBook);
+            
+            return new ResponseEntity<>(currentBook, HttpStatus.ACCEPTED);
+
+        } else {
+
+            return null;
         }
     }
 
 
-    @DeleteMapping("/books/{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteBook(@PathVariable Long id) {
         if (bookRepository.existsById(id)) {

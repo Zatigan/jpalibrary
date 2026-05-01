@@ -1,13 +1,12 @@
-package co.simplon.jpalibrary.service;
+package co.simplon.jpalibrary.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.simplon.jpalibrary.entity.BookEntity;
-import co.simplon.jpalibrary.repository.BookRepository;
+import co.simplon.jpalibrary.Repository.BookRepository;
 
 @Service
 public class BookService {
@@ -21,6 +20,10 @@ public class BookService {
 
   public BookEntity getBookById(final Long id) {
    return bookRepository.findById(id).orElseThrow(() -> new RuntimeException("L'identifiant fourni est incorrect"));
+  }
+
+  public Boolean isBookExisting(final Long id) {
+    return bookRepository.existsById(id);
   }
 
   public BookEntity addBook(BookEntity book) {

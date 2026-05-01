@@ -4,7 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import co.simplon.jpalibrary.entity.BookEntity;
-import co.simplon.jpalibrary.repository.BookRepository;
+import co.simplon.jpalibrary.Repository.BookRepository;
 
 @Component
 public class DataInitializer implements CommandLineRunner{
