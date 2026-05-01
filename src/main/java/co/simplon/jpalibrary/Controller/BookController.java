@@ -78,7 +78,7 @@ public class BookController {
 
         } else {
 
-            return null;
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Current ID does not match any book");
         }
     }
 
